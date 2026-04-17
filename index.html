@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- OPTIMIZACIÓN SEO: Título descriptivo y con foco en la búsqueda -->
+    <title>Farmacia de Turno Hoy en Baradero | Horarios y Dirección</title>
+    <link rel="canonical" href="https://agustinte.github.io/farmacia-de-turno-hoy-baradero/" />
+
+    <!-- Script de Google Analytics 4 (GA4) para seguimiento de visitas -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-022WMVQQQR"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-022WMVQQQR');
+    </script>
+    
+    <!-- OPTIMIZACIÓN SEO: Meta descripción -->
+    <meta name="description" content="Consulta la farmacia que está de turno hoy en Baradero. Encuentra dirección, teléfono y ubicación actualizada para guardias 24 horas.">
+    <meta name="keywords" content="farmacia de turno, baradero, farmacias de guardia, horario farmacia baradero, guardia 24 horas">
+
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- OPTIMIZACIÓN SEO: JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Farmacias de Turno Baradero",
+	  "description": "Servicio de información en tiempo real sobre la farmacia de guardia en Baradero, Provincia de Buenos Aires.",
+	  "address": {
+		  "@type": "PostalAddress",
+		  "addressLocality": "Baradero",
+		  "addressRegion": "Buenos Aires",
+		  "addressCountry": "AR"
+		},
+	  "areaServed": "Baradero"
+      "image": "https://placehold.co/400x200/34D399/ffffff?text=Farmacia+Turno"
+    }
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary-green': '#34D399', // Emerald 400
+                        'dark-bg': '#0F172A',      // Slate 900
+                        'light-card': '#F1F5F9',   // Slate 100
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .map-embed-container {
+            position: relative;
+            padding-bottom: 75%; 
+            height: 0;
+            overflow: hidden;
+        }
+        .map-embed-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen p-4 sm:p-8 font-sans flex justify-center items-start text-slate-900">
+
+    <main class="w-full max-w-2xl">
+        <header class="text-center mb-5">
+            <h1 class="text-3xl sm:text-3xl font-extrabold text-slate-800 mb-2">
+                Farmacia de turno hoy en Baradero
+            </h1>
+        </header>
+
+        <!-- Bloque de Texto SEO -->
+        <section class="mb-4 p-5 bg-green-50 border border-primary-green/50 rounded-xl shadow-md flex items-start italic">
+            <svg class="w-6 h-6 text-primary-green mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <p class="text-sm text-slate-700 leading-relaxed">
+                Servicio rápido de consulta de <strong>Farmacias de Turno en Baradero</strong>. Encontrará en tiempo real cuál es la <strong>Farmacia de Guardia</strong> con servicio <strong>turno 24 horas</strong>. Consulte la dirección, el teléfono y la ubicación exacta para recibir atención farmacéutica inmediata.
+            </p>
+        </section>
+
+		<div class="mt-1 text-center">
+		  <a 
+			href="mailto:publicidad.farmacias.turno@gmail.com?subject=Publicidad%20Farmacias%20-%20Baradero"
+			class="text-sm text-primary-green font-semibold hover:underline"
+		  >
+			¿Querés publicitar tu farmacia? Contactanos
+		  </a>
+		</div>
+		</br>
+
+        <!-- Tarjeta de Farmacia de Turno HOY -->
+        <div id="pharmacy-card" class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border-t-4 border-primary-green transition-all duration-300">
+            <!-- Cargado por JS -->
+        </div>
+		
+        <!-- Región con las próximas tres farmacias (HORIZONTALES) -->
+        <section id="upcoming-section" class="mt-10 hidden">
+            <h3 class="text-xl font-bold text-slate-800 mb-4 px-2 flex items-center">
+                <svg class="w-5 h-5 mr-2 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-4 4V3m-6 4h12M6 11h12M6 15h12M6 19h12"></path></svg>
+                Próximos Turnos
+            </h3>
+            <div id="upcoming-list" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <!-- Cargado por JS -->
+            </div>
+        </section>
+        
+        <div id="message-area" class="mt-8 text-center p-4 text-gray-500 hidden">
+            Cargando la información...
+        </div>
+
+        <!-- Horarios Diurnos - RESTAURADO -->
+        <section class="mt-10 mb-8 p-5 bg-blue-50 border border-blue-200 rounded-xl shadow-sm">
+            <h3 class="text-lg font-bold text-blue-800 mb-3 flex items-center">
+                <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Horarios de Atención Normal (Diurna)
+            </h3>
+            <div class="text-sm text-slate-700 leading-relaxed">
+                <p class="mb-3">Todas las Farmacias en Baradero atienden en los siguientes horarios:</p>
+                <ul class="list-none space-y-1 mb-3">
+                    <li><span class="font-bold">Lunes a Viernes:</span> 8:00 a 12:30 y de 16:00 a 19:30</li>
+                    <li><span class="font-bold">Sábados:</span> 8:30 a 12:30</li>
+                </ul>
+                <p class="text-xs text-blue-700/80 italic">
+                    Fuera de estos horarios y los domingos, solo la Farmacia de Turno indicada arriba ofrece atención de guardia 24 hs.
+                </p>
+            </div>
+        </section>
+
+        <footer class="mt-12 text-center text-sm text-gray-400 mb-10">
+            <p>&copy; <span id="current-year"></span> Farmacias de Turno Baradero.</p>
+        </footer>
+    </main>
+
+    <script>
+        // DATA
+        const PHARMACIES = [
+		  { id: '1', name: 'Farmacia Amartino', address: "J. O'Roarke 2408, Baradero", phone: '(03329) 480263' },
+		  { id: '2', name: 'Farmacia Anchorena', address: 'Bulnes 601, Baradero', phone: '(03329) 480233' },
+		  { id: '3', name: 'Farmacia Boedo', address: 'Sta. M. de Oro 811, Baradero', phone: '(03329) 485671' },
+		  { id: '4', name: 'Farmacia Bolaños', address: 'Lino Piñeiro 279, Baradero', phone: '(03329) 482403' },
+		  { id: '5', name: 'Farmacia Braillard', address: 'Mariano Moreno 1239, Baradero', phone: '(03329) 486879' },
+		  { id: '6', name: 'Farmacia Chervaz', address: 'Carrasco 144, Baradero', phone: '(03329) 484982' },
+		  { id: '7', name: 'Farmacia Daubian', address: 'Aráoz 1101, Baradero', phone: '(03329) 483323' },
+		  { id: '8', name: 'Farmacia Del Pueblo', address: 'Anchorena 1101, Baradero', phone: '(03329) 480165' },
+		  { id: '9', name: 'Farmacia Del Varadero', address: 'San Martín 1701, Baradero', phone: '(03329) 480324' },
+		  { id: '10', name: 'Farmacia Italiana', address: 'Sta. M. de Oro 481, Baradero', phone: '(03329) 480112' },
+		  { id: '11', name: 'Farmacia La Fe', address: 'Gorriti 1401, Baradero', phone: '(03329) 484190' },
+		  { id: '12', name: 'Farmacia La Popular', address: 'Sáenz 1300, Baradero', phone: '(03329) 480316' },
+		  { id: '13', name: 'Farmacia Musante', address: 'René Simón 1280, Baradero', phone: '(03329) 482615' },
+		  { id: '14', name: 'Farmacia Petruzzelli', address: 'San Martín 2125, Baradero', phone: '(03329) 480577' },
+		  { id: '15', name: 'Farmacia Silvano', address: 'Anchorena 1150, Baradero', phone: '(03329) 483907' }
+		];
+
+        const SCHEDULE_DAYS = [
+		  { date: '2026-04-01', pharmacyId: '15' },
+		  { date: '2026-04-02', pharmacyId: '5' },
+		  { date: '2026-04-03', pharmacyId: '3' },
+		  { date: '2026-04-04', pharmacyId: '4' },
+		  { date: '2026-04-05', pharmacyId: '9' },
+		  { date: '2026-04-06', pharmacyId: '12' },
+		  { date: '2026-04-07', pharmacyId: '11' },
+		  { date: '2026-04-08', pharmacyId: '5' },
+		  { date: '2026-04-09', pharmacyId: '8' },
+		  { date: '2026-04-10', pharmacyId: '3' },
+		  { date: '2026-04-11', pharmacyId: '10' },
+		  { date: '2026-04-12', pharmacyId: '7' },
+		  { date: '2026-04-13', pharmacyId: '1' },
+		  { date: '2026-04-14', pharmacyId: '6' },
+		  { date: '2026-04-15', pharmacyId: '5' },
+		  { date: '2026-04-16', pharmacyId: '15' },
+		  { date: '2026-04-17', pharmacyId: '5' },
+		  { date: '2026-04-18', pharmacyId: '3' },
+		  { date: '2026-04-19', pharmacyId: '4' },
+		  { date: '2026-04-20', pharmacyId: '9' },
+		  { date: '2026-04-21', pharmacyId: '12' },
+		  { date: '2026-04-22', pharmacyId: '11' },
+		  { date: '2026-04-23', pharmacyId: '5' },
+		  { date: '2026-04-24', pharmacyId: '8' },
+		  { date: '2026-04-25', pharmacyId: '3' },
+		  { date: '2026-04-26', pharmacyId: '10' },
+		  { date: '2026-04-27', pharmacyId: '7' },
+		  { date: '2026-04-28', pharmacyId: '1' },
+		  { date: '2026-04-29', pharmacyId: '6' },
+		  { date: '2026-04-30', pharmacyId: '5' }
+		];
+
+        // LOGIC
+        function getDateString(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+
+        function getPharmacyForDate(dateObj) {
+            const dateStr = getDateString(dateObj);
+            const entry = SCHEDULE_DAYS.find(item => item.date === dateStr);
+            if (!entry) return null;
+            const details = PHARMACIES.find(p => p.id === entry.pharmacyId);
+            return details ? { ...details, date: entry.date } : null;
+        }
+
+        function formatDateForDisplay(dateString, isShort = false) {
+            const [year, month, day] = dateString.split('-');
+            const date = new Date(year, month - 1, day);
+            if (isShort) {
+                return date.toLocaleDateString('es-AR', { weekday: 'short', day: 'numeric' });
+            }
+            return date.toLocaleDateString('es-AR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        }
+
+        // RENDERING
+        function renderToday() {
+            const today = new Date();
+            const pharmacy = getPharmacyForDate(today);
+            const cardElement = document.getElementById('pharmacy-card');
+
+            if (!pharmacy) {
+                cardElement.innerHTML = `<p class="text-center text-gray-500 py-10">No hay turnos registrados para hoy.</p>`;
+                return;
+            }
+
+            const mapAddress = encodeURIComponent(pharmacy.address);
+            const isPhoneAvailable = pharmacy.phone && pharmacy.phone !== '–';
+            const phoneHTML = isPhoneAvailable 
+                ? `<a href="tel:${pharmacy.phone.replace(/\D/g,'')}" class="text-lg font-semibold text-primary-green">${pharmacy.phone}</a>`
+                : `<p class="text-lg font-semibold text-slate-700">No disponible</p>`;
+
+            cardElement.innerHTML = `
+                <div class="flex items-center mb-6">
+                    <div class="p-3 bg-primary-green/20 rounded-full mr-4">
+                        <svg class="w-8 h-8 text-primary-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-bold text-primary-green uppercase tracking-widest block mb-0.5">Turno de Hoy</span>
+                        <h2 class="text-3xl font-bold text-slate-900">${pharmacy.name}</h2>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                    <div class="p-4 bg-light-card rounded-xl text-center sm:text-left">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase mb-1 block">Dirección</span>
+                        <p class="text-md font-bold text-slate-700 leading-tight">${pharmacy.address}</p>
+                    </div>
+                    <div class="p-4 bg-light-card rounded-xl text-center sm:text-left">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase mb-1 block">Teléfono</span>
+                        ${phoneHTML}
+                    </div>
+                    <div class="p-4 bg-light-card rounded-xl text-center sm:text-left">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase mb-1 block">Fecha Turno</span>
+                        <p class="text-md font-bold text-slate-700 leading-tight">${formatDateForDisplay(pharmacy.date)}</p>
+                    </div>
+                </div>
+
+                <div class="mb-6 p-3 bg-slate-50 border-l-4 border-slate-300 rounded-r-lg">
+                    <p class="text-sm text-slate-600 leading-snug">
+                        * El turno es de <strong>24 horas</strong> y rige <strong>a partir de las 8:00 AM</strong> del día indicado hasta las 8:00 AM del día siguiente.
+                    </p>
+                </div>
+
+                <div class="map-embed-container rounded-xl shadow-inner border border-slate-100">
+                    <iframe src="https://maps.google.com/maps?q=${mapAddress}&output=embed&z=16" frameborder="0"></iframe>
+                </div>
+            `;
+        }
+
+        function renderUpcoming() {
+            const listContainer = document.getElementById('upcoming-list');
+            const section = document.getElementById('upcoming-section');
+            let html = '';
+
+            for (let i = 1; i <= 3; i++) {
+                const nextDate = new Date();
+                nextDate.setDate(nextDate.getDate() + i);
+                const pharmacy = getPharmacyForDate(nextDate);
+
+                if (pharmacy) {
+                    const dateLabel = i === 1 ? 'Mañana' : formatDateForDisplay(pharmacy.date, true);
+                    html += `
+                        <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex flex-col justify-between">
+                            <div>
+                                <span class="text-[9px] font-extrabold text-slate-400 uppercase tracking-widest block mb-1">${dateLabel}</span>
+                                <h4 class="text-sm font-bold text-slate-800 mb-1 leading-tight">${pharmacy.name}</h4>
+                                <p class="text-[11px] text-slate-500 leading-tight mb-2">${pharmacy.address}</p>
+                            </div>
+                            <div class="mt-auto pt-2 border-t border-slate-50">
+                                <span class="text-[10px] font-medium text-slate-400">${pharmacy.phone !== '–' ? pharmacy.phone : 'Sin tel.'}</span>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+
+            if (html) {
+                listContainer.innerHTML = html;
+                section.classList.remove('hidden');
+            }
+        }
+
+        // INIT
+        window.onload = () => {
+            renderToday();
+            renderUpcoming();
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        };
+    </script>
+</body>
+</html>
